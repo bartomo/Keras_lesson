@@ -36,8 +36,9 @@ import numpy as np
 
 k = 4
 num_val_samples = len(train_data) // k
-num_epochs = 100
+num_epochs = 500
 all_scores = []
+all_mae_histories = []
 
 for i in range(k):
     print('processing fold #', i)
@@ -53,9 +54,12 @@ for i in range(k):
                                            axis=0)
     #  Kerasモデルを構築
     model = build_model()
-    model.fit(partial_train_data, partial_train_targets,
-              epochs=num_epochs, batch_size=1, verbose=0)
-    val_mse, val_mae = model.evaluate(val_data, val_targets, verbose=0)
-    all_scores.append(val_mae)
-
+    history = model.fit(partial_train_data, partial_train_targets,
+                        validation_data=(val_data, val_targets),
+                        epochs=num_epochs, batch_size=1, verbose=0)
+    # val_mse, val_mae = model.evaluate(val_data, val_targets, verbose=0)
+    # all_scores.append(val_mae)
+    # breakpoint()
+    mae_history = history.history['val_mae']
+    all_mae_histories.append(mae_history)
 
