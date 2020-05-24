@@ -28,6 +28,9 @@ def build_model():
                   loss='mse',
                   metrics=['mae']
                   )
+
+    # pickle save
+
     return model
 
 
@@ -54,6 +57,7 @@ for i in range(k):
                                            axis=0)
     #  Kerasモデルを構築
     model = build_model()
+    # pickle load
     history = model.fit(partial_train_data, partial_train_targets,
                         validation_data=(val_data, val_targets),
                         epochs=num_epochs, batch_size=1, verbose=0)

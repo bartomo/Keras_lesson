@@ -3,6 +3,7 @@ from keras.datasets import imdb
 import numpy as np
 
 (train_data, train_labels), (test_data, test_labels) = imdb.load_data(num_words=10000)
+# !学習データと検証データのホールドアウト
 
 # one-hot encoding
 def vectorize_sequences(sequences, dimension=10000):
@@ -12,6 +13,7 @@ def vectorize_sequences(sequences, dimension=10000):
     for i, sequence in enumerate(sequences):
         results[i, sequence] = 1.  # results[i]のインデックスを１に設定
     return results
+# !正規化プロセス
 
 # train_dataのベクトル化
 x_train = vectorize_sequences(train_data)
@@ -20,6 +22,7 @@ x_test = vectorize_sequences(test_data)
 # numpyを使った変換
 y_train = np.asarray(train_labels).astype('float32')
 y_test = np.asarray(test_labels).astype('float32')
+# !numpyを使った正規化プロセス
 
 
 # ニューラルネットワーク層の構築
@@ -27,10 +30,13 @@ from keras import models
 from keras import layers
 # モデル定義
 model = models.Sequential()
+# !NNモデルのインスタンス
 # 隠れ層（全結合層）入力10000、隠れ層16、出力1
 model.add(layers.Dense(16, activation='relu', input_shape=(10000, )))
+# !全結合（ネットワーク）層の追加、入力層,活性化関数,ユニット数（入力データの形状と一致）
 model.add(layers.Dense(16, activation='relu'))
 model.add(layers.Dense(1, activation='sigmoid'))
+# !出力層（微分可能でなければback propergationが働かない）
 
 
 # モデルのコンパイル
@@ -39,8 +45,11 @@ from keras import losses
 from keras import metrics
 
 model.compile(optimizer=optimizers.RMSprop(lr=0.001),
+              # オプティマイザ（最適化関数）
               loss=losses.binary_crossentropy,
+              # 損失関数
               metrics=[metrics.binary_accuracy]
+              # 評価指標
               )
 
 # アプローチの検証
