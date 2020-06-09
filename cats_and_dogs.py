@@ -35,7 +35,7 @@ test_cats_dir = os.path.join(test_dir, 'cats')
 os.mkdir(test_cats_dir)
 
 # テスト用の犬画像を配置するディレクトリ
-test_dogs_dir = os.path.join(test_dogs_dir, 'dogs')
+test_dogs_dir = os.path.join(test_dir, 'dogs')
 os.mkdir(test_dogs_dir)
 
 # 最初の1000個の猫画像をtrain_cats_dirにコピー
@@ -67,6 +67,17 @@ for fname in fnames:
     shutil.copyfile(src, dst)
 
 # 次の500個の犬画像をvalidation_cats_dirにコピー
-
+fnames = ['dob.{}.jpg'.format(i) for i in  range(1000, 1500)]
+for fname in fnames:
+    src = os.path.join(original_dataset_dir, fname)
+    dst = os.path.join(validation_dir, fname)
+    shutil.copyfile(src, dst)
 
 # 次の500個の犬画像をtest_cats_dirにコピー
+fnames = ['dog.{}.jop'.format(i) for i in range(1500, 2000)]
+for fname in fnames:
+    src = os.path.join(original_dataset_dir, fname)
+    dst = os.path.join(test_dogs_dir, fname)
+    shutil.copyfile(src, dst)
+
+
