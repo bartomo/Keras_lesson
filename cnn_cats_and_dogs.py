@@ -52,6 +52,33 @@ history = model.fit_generator(train_generator,
                               epochs=30,
                               validation_data=validation_generator,
                               validation_steps=50)
-
 model.save('cats_and_dogs_small_1.h5')
 
+
+model = models.load_model('cats_and_dogs_small_1.h5')
+breakpoint()
+
+import matplotlib.pyplot as plt
+
+acc = history.history['acc']
+val_acc = history.history['val_acc']
+loss = history.history['loss']
+val_loss = history.history['val_loss']
+
+epochs = range(1, len(acc) + 1)
+
+# 正解率をプロット
+plt.plot(epochs, acc, 'bo', label='Training acc')
+plt.plot(epochs, val_acc, 'b', label='Validation acd')
+plt.title('Training and validation acuracy')
+plt.legend()
+
+plt.figure()
+
+# 損失値をプロット
+plt.plot(epochs, loss, 'bo', label='Training loss')
+plt.plot(epochs, val_loss, 'b', label='Validation loss')
+plt.title('Training')
+plt.legend()
+
+plt.show()
