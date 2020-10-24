@@ -1,11 +1,35 @@
+from keras import models
+from keras import layers
+import numpy as np
+import pandas as pd
 # from keras.datasets import boston_housing
 import pickle
+from sklearn.model_selection import train_test_split
+
+# RMSE(二乗平均平方根誤差）
+from keras.metrics import mean_squared_error
 
 # (train_data, train_targets), (test_data, test_targets) = boston_housing.load_data()
 
-#TODO load dataset from Compete
+# TODO load dataset from Compete
+# (train_data, train_targets), (test_data, test_targets) = boston_housing.load_data()
+data_dir = 'Compete/house-prices-advanced-regression-techniques/'
+train_csv = 'train.csv'
+test_csv = 'test.csv'
 
-(train_data, train_targets), (test_data, test_targets) = boston_housing.load_data()
+# csvファイル読み込み
+# train_data = np.loadtxt(data_dir + train_csv)
+# test_data = np.loadtxt(data_dir + test_csv)
+
+train_df = pd.read_csv(data_dir + train_csv, index_col=0)
+test_df = pd.read_csv(data_dir + test_csv, index_col=0)
+breakpoint()
+
+# ndarry変換
+# ワンホットエンコーディング
+
+X_train, X_test, Y_train, Y_test = train_test_split(train_data, test_data, train_size=0.2)
+
 
 
 mean = train_data.mean(axis=0)
@@ -16,8 +40,7 @@ train_data /= std
 test_data -= mean
 test_data /= std
 
-from keras import models
-from keras import layers
+
 
 
 def build_model(build_flag=True):
@@ -40,7 +63,7 @@ def build_model(build_flag=True):
                   metrics=['mae']
                   )
 
-    # TODO pickle save
+    # pickle save
     if build_flag:
         with open('compete_model.pkl', 'wb') as f:
             try:
@@ -48,7 +71,7 @@ def build_model(build_flag=True):
             except Exception as e:
                 breakpoint()
 
-    # TODO load pickle
+    # load mode
     else:
         with open('compete_model.pkl', 'rb') as f:
             model = pickle.load(f)
@@ -56,11 +79,7 @@ def build_model(build_flag=True):
     return model
 
 
-# RMSE(二乗平均平方根誤差）
-from keras.metrics import mean_squared_error
-
 #  k分割交差検証
-import numpy as np
 
 k = 4
 num_val_samples = len(train_data) // k
