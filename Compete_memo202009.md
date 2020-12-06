@@ -27,20 +27,21 @@
 
 #ラベル日本語訳
 SalePrice-プロパティのドルでの販売価格。これは、予測しようとしているターゲット変数です。
+Id:
 MSSubClass：建物クラス
 MSZoning：一般的なゾーニング分類
 LotFrontage：プロパティに接続された道路の線形フィート
 LotArea：ロットサイズ（平方フィート）
 Street：道路アクセスのタイプ
-路地：路地アクセスのタイプ
+Alley:路地：路地アクセスのタイプ
 LotShape：プロパティの一般的な形状
 LandContour：プロパティの平坦性
-ユーティリティ：利用可能なユーティリティのタイプ
+Utilities:ユーティリティ：利用可能なユーティリティのタイプ
 LotConfig：ロット構成
 LandSlope：プロパティの勾配
-近所：エイムス市内の制限内の物理的な場所
-条件1：幹線道路または鉄道に近接
-条件2：幹線道路または鉄道に近接している（秒がある場合）
+Neighborhood:近所：エイムス市内の制限内の物理的な場所
+Condition1:条件1：幹線道路または鉄道に近接
+Condition2:条件2：幹線道路または鉄道に近接している（秒がある場合）
 BldgType：住居のタイプ
 HouseStyle：住居のスタイル
 OverallQual：全体的な材料と仕上げの品質
@@ -55,7 +56,7 @@ MasVnrType：石積みのベニヤのタイプ
 MasVnrArea：平方フィートの石材ベニヤ面積
 ExterQual：外装材の品質
 ExterCond：外装材の現状
-財団：財団の種類
+Foundation:財団：財団の種類
 BsmtQual：地下室の高さ
 BsmtCond：地下室の概況
 BsmtExposure：ストライキまたは庭園レベルの地下壁
@@ -65,10 +66,10 @@ BsmtFinType2：2番目に終了した領域の品質（存在する場合）
 BsmtFinSF2：タイプ2仕上げ済み平方フィート
 BsmtUnfSF：地下室の未完成の平方フィート
 TotalBsmtSF：地下面積の合計平方フィート
-暖房：暖房の種類
+Heating:暖房：暖房の種類
 HeatingQC：加熱の品質と状態
 CentralAir：セントラル空調
-電気：電気システム
+Electrical:電気：電気システム
 1stFlrSF：1階の平方フィート
 2ndFlrSF：2階の平方フィート
 LowQualFinSF：低品質の仕上げ済み平方フィート（すべてのフロア）
@@ -77,12 +78,12 @@ BsmtFullBath：地下フルバスルーム
 BsmtHalfBath：地下半分のバスルーム
 FullBath：グレードを超えるフルバスルーム
 HalfBath：グレード上記ハーフ浴場
-ベッドルーム：地下階の上のベッドルームの数
-キッチン：キッチン数
+BedroomAbvGr:ベッドルーム：地下階の上のベッドルームの数
+KitchenAbvGr:キッチン：キッチン数
 KitchenQual：キッチンの品質
 TotRmsAbvGrd：グレードを超える部屋の合計（バスルームは含まれません）
-機能的：ホーム機能の評価
-暖炉：暖炉の数
+Functional:機能的：ホーム機能の評価
+Fireplace:暖炉：暖炉の数
 FireplaceQu：暖炉の品質
 GarageType：ガレージの場所
 GarageYrBlt：ガレージが建設された年
@@ -99,7 +100,7 @@ EnclosedPorch：平方フィートで囲まれたポーチエリア
 ScreenPorch：平方フィートのスクリーンポーチエリア
 PoolArea：平方フィートのプール面積
 PoolQC：プールの品質
-フェンス：フェンスの品質
+Fence:フェンス：フェンスの品質
 MiscFeature：他のカテゴリでカバーされていないその他の機能
 MiscVal：その他の機能の$ Value
 MoSold：販売月
